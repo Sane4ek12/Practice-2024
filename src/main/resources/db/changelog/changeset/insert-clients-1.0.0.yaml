@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: 5
+      author: Alexander
+      changes:
+        - insert:
+            tableName: client
+            columns:
+              - column:
+                  name: first_name
+                  value: "Ivan"
+              - column:
+                  name: last_name
+                  value: "Ivanov"
+              - column:
+                  name: gender
+                  value: "Male"
+              - column:
+                  name: birthdate
+                  value: "2003-03-03"
+              - column:
+                  name: phone
+                  value: "8(520)-927-02-58"
+              - column:
+                  name: email
+                  value: "Ivanov@mail.ru"
+              - column:
+                  name: balance
+                  value: "70000"
+        - insert:
+            tableName: client
+            columns:
+              - column:
+                  name: first_name
+                  value: "Petya"
+              - column:
+                  name: last_name
+                  value: "Petrov"
+              - column:
+                  name: gender
+                  value: "Male"
+              - column:
+                  name: birthdate
+                  value: "2004-02-02"
+              - column:
+                  name: phone
+                  value: "8(920)-645-02-54"
+              - column:
+                  name: email
+                  value: "Petrov@mail.ru"
+              - column:
+                  name: balance
+                  value: "50000"

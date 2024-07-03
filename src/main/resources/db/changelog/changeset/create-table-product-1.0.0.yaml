@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: Alexander
+      changes:
+        - createTable:
+            tableName: product
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(40)
+              - column:
+                  name: price
+                  type: integer
+              - column:
+                  name: production_year
+                  type: date
+              - column:
+                  name: warranty_period
+                  type: float
+              - column:
+                  name: description
+                  type: varchar(100)
+              - column:
+                  name: quantity
+                  type: integer
+              - column:
+                  name: provider_id
+                  type: bigint

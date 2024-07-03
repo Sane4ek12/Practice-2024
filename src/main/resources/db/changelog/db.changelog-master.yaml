@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - include:
+      file: changeset/create-table-client-1.0.0.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: changeset/create-table-orders-1.0.0.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: changeset/create-table-product-1.0.0.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: changeset/create-table-provider-1.0.0.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: changeset/insert-clients-1.0.0.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: changeset/insert-providers-1.0.0.yaml
+      relativeToChangelogFile: true

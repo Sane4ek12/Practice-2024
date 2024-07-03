@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: 6
+      author: Alexander
+      changes:
+        - insert:
+            tableName: provider
+            columns:
+              - column:
+                  name: name
+                  value: "ООО Razor"
+              - column:
+                  name: country
+                  value: "Russia"
+              - column:
+                  name: address
+                  value: "Lenin street, d. 69"
+              - column:
+                  name: email
+                  value: "Razor@ru"
+        - insert:
+            tableName: provider
+            columns:
+              - column:
+                  name: name
+                  value: "АОА Philips"
+              - column:
+                  name: country
+                  value: "Russia"
+              - column:
+                  name: address
+                  value: "Stalin street, d. 71"
+              - column:
+                  name: email
+                  value: "Philips@mail.com"
+        - insert:
+            tableName: provider
+            columns:
+              - column:
+                  name: name
+                  value: "ОАО Hyper"
+              - column:
+                  name: country
+                  value: "Russia"
+              - column:
+                  name: address
+                  value: "Lenin street, d. 70"
+              - column:
+                  name: email
+                  value: "Hyper@gmail.ru"

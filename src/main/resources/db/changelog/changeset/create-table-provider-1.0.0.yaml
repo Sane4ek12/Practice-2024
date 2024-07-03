@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4
+      author: Alexander
+      changes:
+        - createTable:
+            tableName: provider
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(40)
+              - column:
+                  name: country
+                  type: varchar(30)
+              - column:
+                  name: address
+                  type: varchar(100)
+              - column:
+                  name: email
+                  type: varchar(40)

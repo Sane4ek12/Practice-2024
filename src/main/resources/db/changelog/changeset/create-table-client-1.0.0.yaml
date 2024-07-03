@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Alexander
+      changes:
+        - createTable:
+            tableName: client
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  incrementBy: 1
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: first_name
+                  type: varchar(40)
+              - column:
+                  name: last_name
+                  type: varchar(60)
+              - column:
+                  name: gender
+                  type: varchar(20)
+              - column:
+                  name: birthdate
+                  type: date
+              - column:
+                  name: phone
+                  type: varchar(100)
+              - column:
+                  name: email
+                  type: varchar(100)
+              - column:
+                  name: balance
+                  type: integer
