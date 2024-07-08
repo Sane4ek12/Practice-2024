@@ -17,10 +17,8 @@ public class ProductService {
     private final ProductMapperImpl productMapper;
 
     public ProductDTO addProduct(ProductDTO productDTO) {
-        return productMapper
-                .productToDto(productRepository
-                        .save(productMapper
-                                .dtoToProduct(productDTO)));
+        var product  = productMapper.dtoToProduct(productDTO);
+        return productMapper.productToDto(productRepository.save(product));
     }
 
     public ProductDTO getProductById(Long id) {
@@ -60,10 +58,8 @@ public class ProductService {
     }
 
     public ProductDTO updateProduct(ProductDTO productDTO) {
-        return productMapper
-                .productToDto(productRepository
-                        .save(productMapper
-                                .dtoToProduct(productDTO)));
+        var product  = productMapper.dtoToProduct(productDTO);
+        return productMapper.productToDto(productRepository.save(product));
     }
 
     public void deleteProduct(Long id) {

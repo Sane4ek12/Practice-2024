@@ -17,10 +17,8 @@ public class ClientService {
     private final ClientMapperImpl clientMapper;
 
     public ClientDTO addClient(ClientDTO clientDTO) {
-        return clientMapper
-                .clientToDto(clientRepository
-                        .save(clientMapper
-                                .dtoToClient(clientDTO)));
+        var client = clientMapper.dtoToClient(clientDTO);
+        return clientMapper.clientToDto(clientRepository.save(client));
     }
 
     public ClientDTO findClientById(Long id) {
@@ -39,10 +37,8 @@ public class ClientService {
     }
 
     public ClientDTO updateClient(ClientDTO clientDTO) {
-        return clientMapper
-                .clientToDto(clientRepository
-                        .save(clientMapper
-                                .dtoToClient(clientDTO)));
+        var client = clientMapper.dtoToClient(clientDTO);
+        return clientMapper.clientToDto(clientRepository.save(client));
     }
 
     public void deleteClient(Long id) {

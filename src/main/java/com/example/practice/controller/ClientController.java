@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,6 +47,7 @@ public class ClientController {
             summary = "Добавление клиента",
             description = "Позволяет добавить клиента в БД магазина"
     )
+    @ResponseStatus(HttpStatus.CREATED)
     public ClientDTO addClient(@Valid @RequestBody ClientDTO clientDTO) {
         return clientService.addClient(clientDTO);
     }

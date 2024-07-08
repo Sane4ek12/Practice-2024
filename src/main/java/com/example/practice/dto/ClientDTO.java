@@ -24,8 +24,10 @@ public class ClientDTO {
     @NotBlank(message = "Фамилия не должна быть пустой")
     @Schema(description = "Фамилия клиента")
     private String lastName;
+    @NotNull(message = "Укажите пол")
     @Schema(description = "Пол клиента")
     private Gender gender;
+    @NotNull(message = "Укажите дату рождения")
     @Schema(description = "Дата рождения клиента")
     private Date birthdate;
     @Pattern(regexp = "8[(]\\d{3}[)]-\\d{3}-\\d{2}-\\d{2}",
@@ -36,6 +38,7 @@ public class ClientDTO {
     @Schema(description = "E-mail клиента")
     private String email;
     @PositiveOrZero(message = "Баланс не может быть отрицательным")
+    @NotNull(message = "Укажите баланс")
     @Schema(description = "Баланс клиента")
     private Integer balance;
 }

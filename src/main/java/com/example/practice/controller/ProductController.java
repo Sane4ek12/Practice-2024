@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class ProductController {
             summary = "Добавление товара",
             description = "Позволяет добавить товар в БД магазина"
     )
+    @ResponseStatus(HttpStatus.CREATED)
     public ProductDTO addProduct(@Valid @RequestBody ProductDTO productDTO) {
         return productService.addProduct(productDTO);
     }

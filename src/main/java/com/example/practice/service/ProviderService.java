@@ -32,17 +32,13 @@ public class ProviderService {
     }
 
     public ProviderDTO addProvider(ProviderDTO providerDTO) {
-        return providerMapper
-                .providerToDto(providerRepository
-                        .save(providerMapper
-                                .dtoToProvider(providerDTO)));
+        var provider = providerMapper.dtoToProvider(providerDTO);
+        return providerMapper.providerToDto(providerRepository.save(provider));
     }
 
     public ProviderDTO updateProvider(ProviderDTO providerDTO) {
-        return providerMapper
-                .providerToDto(providerRepository
-                        .save(providerMapper
-                                .dtoToProvider(providerDTO)));
+        var provider = providerMapper.dtoToProvider(providerDTO);
+        return providerMapper.providerToDto(providerRepository.save(provider));
     }
 
     public void deleteProvider(Long id) {

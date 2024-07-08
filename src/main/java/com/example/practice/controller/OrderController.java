@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,6 +27,7 @@ public class OrderController {
             summary = "Добавление заказа",
             description = "Позволяет добавить заказ в БД магазина"
     )
+    @ResponseStatus(HttpStatus.CREATED)
     public OrderDTO addOrder(@Valid @RequestBody OrderDTO orderDTO) {
         return orderService.addOrder(orderDTO);
     }

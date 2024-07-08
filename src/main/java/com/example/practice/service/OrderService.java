@@ -27,17 +27,21 @@ public class OrderService {
         var order = orderMapper.dtoToOrder(orderDTO);
         var product = productRepository.findById(order.getProductId()).get();
         var client = clientRepository.findById(order.getClientId()).get();
-        if(product.getQuantity() < order.getQuantity())
-            throw new NotEnoughQuantityException("Недостаточно товара на складе! Сейчас на складе - "
-                    + product.getQuantity() + ", необходимо - " + order.getQuantity());
-        if(client.getBalance() < product.getPrice() * order.getQuantity())
-            throw new NotEnoughMoneyException("Недостаточно средств на счете! Текущий баланс - "
-                    + client.getBalance() + ", необходимо - "
-                    + product.getPrice() * order.getQuantity());
-        client.setBalance(client.getBalance() - product.getPrice() * order.getQuantity());
-        product.setQuantity(product.getQuantity() - order.getQuantity());
-        clientRepository.save(client);
-        productRepository.save(product);
+        if (product.getQuantity() != null && order.getQuantity() != null) {
+            if (product.getQuantity() < order.getQuantity())
+                throw new NotEnoughQuantityException("Недостаточно товара на складе! Сейчас на складе - "
+                        + product.getQuantity() + ", необходимо - " + order.getQuantity());
+            else product.setQuantity(product.getQuantity() - order.getQuantity());
+        }
+        if (client.getBalance() != null && product.getPrice() != null && order.getQuantity() != null) {
+            if (client.getBalance() < product.getPrice() * order.getQuantity())
+                throw new NotEnoughMoneyException("Недостаточно средств на счете! Текущий баланс - "
+                        + client.getBalance() + ", необходимо - "
+                        + product.getPrice() * order.getQuantity());
+            else client.setBalance(client.getBalance() - product.getPrice() * order.getQuantity());
+        }
+        order.setClient(client);
+        order.setProduct(product);
         return orderMapper
                 .orderToDto(orderRepository
                         .save(order));
@@ -86,16 +90,16 @@ public class OrderService {
         var order = orderRepository.findById(orderDTO.getId()).get();
         var product = order.getProduct();
         var client = order.getClient();
-        if (orderDTO.getOrderStatus() == OrderStatus.Cancelled) {
-            product.setQuantity(product.getQuantity() + order.getQuantity());
-            client.setBalance(client.getBalance() + product.getPrice() * order.getQuantity());
-            clientRepository.save(client);
-            productRepository.save(product);
+        if (orderDTO.getOrderStatus() != null) {
+            if (orderDTO.getOrderStatus() == OrderStatus.Cancelled) {
+                product.setQuantity(product.getQuantity() + order.getQuantity());
+                client.setBalance(client.getBalance() + product.getPrice() * order.getQuantity());
+                order.setClient(client);
+                order.setProduct(product);
+            }
         }
-        return orderMapper
-                .orderToDto(orderRepository
-                        .save(orderMapper
-                                .dtoToOrder(orderDTO)));
+        order = orderMapper.dtoToOrder(orderDTO);
+        return orderMapper.orderToDto(orderRepository.save(order));
     }
 
     public void deleteOrder(Long id) {
